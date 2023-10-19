@@ -6,17 +6,17 @@ read login
 
 echo "enter your password"
 
-read name
+read password
 
 echo "enter your db name"
 
 read dbname
 
-echo "enter ip your remote"
+echo "enter ip:port your remote db"
 
 read ip
 
 
-curl http://$login:$password@$ip:5984/$dbname/_all_docs?include_docs=true > $dbname.json
+curl http://$login:$password@$ip/$dbname/_all_docs?include_docs=true > $dbname.json
 
-echo "your json file saved at" $pwd
+echo "your json file saved" 
