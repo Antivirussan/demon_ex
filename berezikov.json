@@ -1,4 +1,0 @@
-{"total_rows":2,"offset":0,"rows":[
-{"id":"Berezikov","key":"Berezikov","value":{"rev":"2-a90866ce5c13e9e25c0417a3f8137e1a"},"doc":{"_id":"Berezikov","_rev":"2-a90866ce5c13e9e25c0417a3f8137e1a","name":"Rodion","group":"CA41-20"}},
-{"id":"Diacov","key":"Diacov","value":{"rev":"2-42da39906dd336d89b82163362e03593"},"doc":{"_id":"Diacov","_rev":"2-42da39906dd336d89b82163362e03593","name":"Nikita","group":"CA41-20"}}
-]}
