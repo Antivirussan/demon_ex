@@ -1,0 +1,72 @@
+Client {
+  Name = db-bak
+  Address = 192.168.0.242
+  FDPort = 9102
+  Catalog = MyCatalog
+  Password = "P@ssw0rd"
+  File Retention = 30 days
+  Job Retention = 2 months
+  AutoPrune = yes
+}
+
+Storage {
+  Name = db-bak
+   Password = "P@ssw0rd"
+  Address = 192.168.0.242
+  SDPort = 9103
+  Device = db-bak
+  Media Type = File
+}
+
+Schedule {
+Name = "db-bak"
+Run = Level=Full on 1st sun at 22:30
+Run = Level=Full on 2nd-5th sun at 22:30
+Run = Level=Differential on mon-sat at 22:30
+} 
+
+Pool {
+  Name = db-bak
+  Pool Type = Backup
+   AutoPrune = yes 
+   Recycle = yes                       
+  Volume Retention = 9 days     
+  Maximum Volume Bytes = 10G          
+  Maximum Volumes = 10
+  LabelFormat = "db-bak"
+}
+
+FileSet {
+  Name = "db-bak" 
+  Include {
+    Options {
+      compression = GZIP
+      signature = MD5 
+    }
+    File = /var/lib/couchdb/
+  }
+} 
+
+Job {
+  Name = "BackupdbFull"
+  Type = Backup
+  Level = Full
+  Storage = db-bak 
+  FileSet="db-bak"
+  Schedule = "db-bak"
+  Pool = db-bak
+  Client=db-bak
+  Write Bootstrap = "/var/lib/bacula/%n.bsr"
+  Messages = Standard
+}
+
+Job {
+   Name = "Restoredb"
+   Type = Restore
+   Client=db-bak
+   FileSet="db-bak"
+   Storage = db-bak
+   Pool = db-bak
+   Messages = Standard
+   Where = /
+}

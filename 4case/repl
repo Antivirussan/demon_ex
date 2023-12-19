@@ -1,0 +1,1 @@
+curl -X POST http://admin:toor@192.168.0.130:5984/_replicator -d '{"source":"http://admin:toor@192.168.0.130:5984/berezilov", "target":"http://admin:toor@192.168.0.242:5984/berezikov", "create_target":false, "continuous":false}' -H "Content-Type: application/json"
