@@ -1,12 +1,5 @@
 #!/bin/bash
 
-#назначение ip 
-
-ip a add 10.5.5.10 dev ens33 
-ip r add default via 10.5.5.1 
-
-echo "nameserver 77.88.8.8" > /etc/resolv.conf
-
 #установка пакетов
 apt-get update 
 apt-get install -y NetworkManager NetworkManager-tui nano iptables-ipv6 frr strongswan 
@@ -19,11 +12,6 @@ systemctl restart network
 systemctl enable --now NetworkManager 
 nmtui 
 #exec bash 
-
-ip a del 10.5.5.10 dev ens33 
-ip r del default via 10.5.5.1 
-
-
 
 #настройка iptables
 iptables -t nat -A POSTROUTING -s 172.16.0.0/28 -o ens33 -j MASQUERADE 
