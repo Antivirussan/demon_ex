@@ -5,7 +5,7 @@ apt-get update
 apt-get install -y nano iptables-ipv6 iperf3
 
 #настройка интерфейсов и имени
-hostnamects set-hostname ISP
+hostnamectl set-hostname ISP
 exec bash 
 
 mkdir /etc/net/ifaces/ens34
@@ -55,7 +55,7 @@ systemctl enable --now ip6tables.service
 
 #настройка sysctl 
 sed -i -e 's/net.ipv4.ip_forward = 0/net.ipv4.ip_forward = 1/g' /etc/net/sysctl.conf
-echo "net.ipv6.conf.all.forvarding = 1" >> /etc/net/sysctl.conf
+echo "net.ipv6.conf.all.forwarding = 1" >> /etc/net/sysctl.conf
 sysctl -p /etc/net/sysctl.conf
 
 #ssh
