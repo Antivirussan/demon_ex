@@ -18,7 +18,7 @@ systemctl restart network
 
 systemctl enable --now NetworkManager 
 nmtui 
-exec bash 
+#exec bash 
 
 ip a del 10.5.5.10 dev ens33 
 ip r del default via 10.5.5.1 

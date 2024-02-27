@@ -6,7 +6,7 @@ apt-get install -y nano iptables-ipv6 iperf3
 
 #настройка интерфейсов и имени
 hostnamectl set-hostname ISP
-exec bash 
+#exec bash 
 
 mkdir /etc/net/ifaces/ens34
 mkdir /etc/net/ifaces/ens35
@@ -63,5 +63,4 @@ sed -i -e 's/#Port 22/Port 22/g' /etc/openssh/sshd_config
 sed -i -e 's/#PermitRootLogin whithout-password/PermitRootLogin yes/g' /etc/openssh/sshd_config
 systemctl restart sshd
 
-#iperf3
-iperf3 -s
+reboot

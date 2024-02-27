@@ -7,7 +7,7 @@ apt-get install -y NetworkManager NetworkManager-tui nano iptables-ipv6 iperf3
 #настройка интерфейсов и имени
 systemctl enable --now NetworkManager 
 nmtui 
-exec bash 
+#exec bash 
 
 #настройка iptables
 iptables -t nat -A POSTROUTING -s 10.3.3.0/24 -o ens33 -j MASQUERADE 
@@ -33,5 +33,4 @@ sed -i -e 's/#Port 22/Port 22/g' /etc/openssh/sshd_config
 sed -i -e 's/#PermitRootLogin whithout-password/PermitRootLogin yes/g' /etc/openssh/sshd_config
 systemctl restart sshd
 
-#iperf3
-iperf3 -s
+reboot
